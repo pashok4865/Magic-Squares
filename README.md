@@ -1,1 +1,3 @@
 # Magic-Squares
+
+This JavaFX program is an engaging magic squares game that challenges players to turn all the buttons on a grid from their initial color to green by strategically clicking on them. The game's interface consists of a grid of buttons, each representing a number from 1 to 9. The colors of the buttons are randomized between green and red every time the game is played. When a button is clicked, its color changes to the opposite (green changes to red and vice versa), and the colors of certain adjacent buttons are also altered, creating a captivating and dynamic gameplay experience. 
