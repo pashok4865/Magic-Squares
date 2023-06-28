@@ -1,0 +1,382 @@
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import java.lang.Math;
+import java.util.random.RandomGenerator;
+
+public class magicSquares extends Application {
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    protected void checkWin() {
+        int buttonGreenCount = 0;
+
+        if (tLButton.getStyle().equals("-fx-background-color: #66ff00; ")) {
+            buttonGreenCount++;
+        }
+        if (tCButton.getStyle().equals("-fx-background-color: #66ff00; ")) {
+            buttonGreenCount++;
+        }
+        if (tRButton.getStyle().equals("-fx-background-color: #66ff00; ")) {
+            buttonGreenCount++;
+        }
+        if (mLButton.getStyle().equals("-fx-background-color: #66ff00; ")) {
+            buttonGreenCount++;
+        }
+        if (mCButton.getStyle().equals("-fx-background-color: #66ff00; ")) {
+            buttonGreenCount++;
+        }
+        if (mRButton.getStyle().equals("-fx-background-color: #66ff00; ")) {
+            buttonGreenCount++;
+        }
+        if (bLButton.getStyle().equals("-fx-background-color: #66ff00; ")) {
+            buttonGreenCount++;
+        }
+        if (bCButton.getStyle().equals("-fx-background-color: #66ff00; ")) {
+            buttonGreenCount++;
+        }
+        if (bRButton.getStyle().equals("-fx-background-color: #66ff00; ")) {
+            buttonGreenCount++;
+        }
+
+        if (buttonGreenCount >= 9) {
+            winLabel.setText("You win!"); //wins if all buttons turn green
+        } else {
+            winLabel.setText("Good luck!");
+        }
+    }
+    Button tLButton = new Button("1");
+    Button tCButton = new Button("2");
+    Button tRButton = new Button("3");
+    Button mLButton = new Button("4");
+    Button mCButton = new Button("5");
+    Button mRButton = new Button("6");
+    Button bLButton = new Button("7");
+    Button bCButton = new Button("8");
+    Button bRButton = new Button("9");
+    HBox topRow = new HBox(5, tLButton, tCButton, tRButton);
+    VBox middleLeft = new VBox(mLButton);
+    HBox middleCenter = new HBox(mCButton);
+    VBox middleRight = new VBox(mRButton);
+    HBox bottomRow = new HBox(5, bLButton, bCButton, bRButton);
+
+    Label winLabel= new Label("Good luck!");
+
+    VBox bottomArea = new VBox(bottomRow, winLabel);
+
+
+    @Override
+    public void start(Stage primaryStage) {
+        //used to determine initial color state of each button
+        final boolean[] tLState = {true};
+        final boolean[] tCState = new boolean[1];
+        final boolean[] tRState = new boolean[1];
+        final boolean[] mLState = new boolean[1];
+        final boolean[] mCState = new boolean[1];
+        final boolean[] mRState = {true};
+        final boolean[] bLState = new boolean[1];
+        final boolean[] bCState = new boolean[1];
+        final boolean[] bRState = {true};
+
+        //sets initial colors
+        if (Math.round(Math.random())==0) {
+            tLButton.setStyle("-fx-background-color: #66ff00; "); //green
+        }
+        else {
+            tLButton.setStyle("-fx-background-color: #ff0000; "); //red
+            tLState[0] = true;
+        }
+
+        if (Math.round(Math.random())==0) {
+            tCState[0] = true;
+            tCButton.setStyle("-fx-background-color: #66ff00; "); //green
+        }
+        else {
+            tCButton.setStyle("-fx-background-color: #ff0000; "); //red
+            tCState[0] = true;
+        }
+
+        if (Math.round(Math.random())==0) {
+            tRState[0] = true;
+            tRButton.setStyle("-fx-background-color: #66ff00; "); //green
+        }
+        else {
+            tRButton.setStyle("-fx-background-color: #ff0000; "); //red
+            tRState[0] = true;
+        }
+
+        if (Math.round(Math.random())==0) {
+            mLState[0] = true;
+            mLButton.setStyle("-fx-background-color: #66ff00; "); //green
+        }
+        else {
+            mLButton.setStyle("-fx-background-color: #ff0000; "); //red
+            mLState[0] = true;
+        }
+
+        if (Math.round(Math.random())==0) {
+            mCState[0] = true;
+            mCButton.setStyle("-fx-background-color: #66ff00; "); //green
+        }
+        else {
+            mCButton.setStyle("-fx-background-color: #ff0000; "); //red
+            mCState[0] = true;
+        }
+
+        if (Math.round(Math.random())==0) {
+            mRButton.setStyle("-fx-background-color: #66ff00; "); //green
+        }
+        else {
+            mRButton.setStyle("-fx-background-color: #ff0000; "); //red
+            mRState[0] = true;
+        }
+
+        if (Math.round(Math.random())==0) {
+            bLState[0] = true;
+            bLButton.setStyle("-fx-background-color: #66ff00; "); //green
+        }
+        else {
+            bLButton.setStyle("-fx-background-color: #ff0000; "); //red
+            bLState[0] = true;
+        }
+
+        if (Math.round(Math.random())==0) {
+            bCState[0] = true;
+            bCButton.setStyle("-fx-background-color: #66ff00; "); //green
+        }
+        else {
+            bCButton.setStyle("-fx-background-color: #ff0000; "); //red
+            bCState[0] = true;
+        }
+
+        if (Math.round(Math.random())==0) {
+            bRButton.setStyle("-fx-background-color: #66ff00; "); //green
+        }
+        else {
+            bRButton.setStyle("-fx-background-color: #ff0000; "); //red
+            bRState[0] = true;
+
+        }
+
+        tLButton.setOnAction(event -> {
+            if (tLState[0]) {
+                tLButton.setStyle("-fx-background-color: #66ff00; "); // Change to green
+                tCButton.setStyle("-fx-background-color: #ff0000; "); // Change tCButton to red
+                mLButton.setStyle("-fx-background-color: #ff0000; "); // Change mLButton to red
+                tLState[0] = false;
+                tCState[0] = true; // Toggle the state
+                mLState[0] = true; // Toggle the state
+            } else {
+                tLButton.setStyle("-fx-background-color: #ff0000; "); // Change to red
+                tCButton.setStyle("-fx-background-color: #66ff00; "); // Change tCButton to green
+                mLButton.setStyle("-fx-background-color: #66ff00; "); // Change mLButton to green
+                tLState[0] = true; // Toggle the state
+                tCState[0] = false; // Toggle the state
+                mLState[0] = false; // Toggle the state
+            }
+
+            checkWin();
+        });
+
+        tCButton.setOnAction(event -> {
+            // Logic for tCButton
+            if (tCState[0]) {
+                tCButton.setStyle("-fx-background-color: #66ff00; "); // Change to green
+                tLButton.setStyle("-fx-background-color: #ff0000; "); // Change tLButton to red
+                tRButton.setStyle("-fx-background-color: #ff0000; "); // Change tRButton to red
+                tCState[0] = false; // Toggle the state
+                tLState[0] = true; // Toggle the state
+                tRState[0] = true; // Toggle the state
+            } else {
+                tCButton.setStyle("-fx-background-color: #ff0000; "); // Change to red
+                tLButton.setStyle("-fx-background-color: #66ff00; "); // Change tLButton to green
+                tRButton.setStyle("-fx-background-color: #66ff00; "); // Change tRButton to green
+                tCState[0] = true; // Toggle the state
+                tLState[0] = false; // Toggle the state
+                tRState[0] = false; // Toggle the state
+            }
+
+            checkWin(); // Call checkWin() method
+        });
+
+        tRButton.setOnAction(event -> {
+            // Logic for tRButton
+            if (tRState[0]) {
+                tRButton.setStyle("-fx-background-color: #66ff00; "); // Change to green
+                tCButton.setStyle("-fx-background-color: #ff0000; "); // Change tCButton to red
+                mRButton.setStyle("-fx-background-color: #ff0000; "); // Change bRButton to red
+                tRState[0] = false; // Toggle the state
+                tCState[0] = true; // Toggle the state
+                mRState[0] = true; // Toggle the state
+            } else {
+                tRButton.setStyle("-fx-background-color: #ff0000; "); // Change to red
+                tCButton.setStyle("-fx-background-color: #66ff00; "); // Change tCButton to green
+                mRButton.setStyle("-fx-background-color: #66ff00; "); // Change bRButton to green
+                tRState[0] = true; // Toggle the state
+                tCState[0] = false; // Toggle the state
+                mRState[0] = false; // Toggle the state
+            }
+
+            checkWin(); // Call checkWin() method
+        });
+
+        mLButton.setOnAction(event -> {
+            // Logic for mLButton
+            if (mLState[0]) {
+                mLButton.setStyle("-fx-background-color: #66ff00; "); // Change to green
+                tLButton.setStyle("-fx-background-color: #ff0000; "); // Change tLButton to red
+                bLButton.setStyle("-fx-background-color: #ff0000; "); // Change bLButton to red
+                mLState[0] = false; // Toggle the state
+                tLState[0] = true; // Toggle the state
+                bLState[0] = true; // Toggle the state
+            } else {
+                mLButton.setStyle("-fx-background-color: #ff0000; "); // Change to red
+                tLButton.setStyle("-fx-background-color: #66ff00; "); // Change tLButton to green
+                bLButton.setStyle("-fx-background-color: #66ff00; "); // Change bLButton to green
+                mLState[0] = true; // Toggle the state
+                tLState[0] = false; // Toggle the state
+                bLState[0] = false; // Toggle the state
+            }
+            checkWin(); // Call checkWin() method
+        });
+
+        mCButton.setOnAction(event -> {
+            // Logic for mCButton
+            if (mCState[0]) {
+                mCButton.setStyle("-fx-background-color: #66ff00; "); // Change to green
+                tCButton.setStyle("-fx-background-color: #ff0000; "); // Change tCButton to red
+                mLButton.setStyle("-fx-background-color: #ff0000; "); // Change mLButton to red
+                mRButton.setStyle("-fx-background-color: #ff0000; "); // Change mRButton to red
+                bCButton.setStyle("-fx-background-color: #ff0000; "); // Change bCButton to red
+                mCState[0] = false; // Toggle the state
+                tCState[0] = false; // Toggle the state
+                mLState[0] = false; // Toggle the state
+                mRState[0] = false; // Toggle the state
+                bCState[0] = false; // Toggle the state
+            } else {
+                mCButton.setStyle("-fx-background-color: #ff0000; "); // Change to red
+                tCButton.setStyle("-fx-background-color: #66ff00; "); // Change tCButton to green
+                mLButton.setStyle("-fx-background-color: #66ff00; "); // Change mLButton to green
+                mRButton.setStyle("-fx-background-color: #66ff00; "); // Change mRButton to green
+                bCButton.setStyle("-fx-background-color: #66ff00; "); // Change bCButton to green
+                mCState[0] = true; // Toggle the state
+                tCState[0] = true; // Toggle the state
+                mLState[0] = true; // Toggle the state
+                mRState[0] = true; // Toggle the state
+                bCState[0] = true; // Toggle the state
+            }
+
+            checkWin(); // Call checkWin() method
+        });
+
+        mRButton.setOnAction(event -> {
+            // Logic for mRButton
+            if (mRState[0]) {
+                mRButton.setStyle("-fx-background-color: #66ff00; "); // Change to green
+                tRButton.setStyle("-fx-background-color: #ff0000; "); // Change tRButton to red
+                bRButton.setStyle("-fx-background-color: #ff0000; "); // Change bRButton to red
+                mRState[0] = false; // Toggle the data
+                tRState[0] = false; // Toggle the state
+                bRState[0] = false; // Toggle the state
+            } else {
+                mRButton.setStyle("-fx-background-color: #ff0000; "); // Change to red
+                tRButton.setStyle("-fx-background-color: #66ff00; "); // Change tRButton to green
+                bRButton.setStyle("-fx-background-color: #66ff00; "); // Change bRButton to green
+                mRState[0] = true; // Toggle the data
+                tRState[0] = true; // Toggle the state
+                bRState[0] = true; // Toggle the state
+            }
+            checkWin(); // Call checkWin() method
+        });
+
+        bLButton.setOnAction(event -> {
+            if (bLState[0]) {
+                bLButton.setStyle("-fx-background-color: #66ff00; "); // Change to green
+                mLButton.setStyle("-fx-background-color: #ff0000; "); // Change to red
+                bCButton.setStyle("-fx-background-color: #ff0000; "); // Change to red
+                bLState[0] = false; // Toggle the state
+                mLState[0] = false; // Toggle the state
+                bCState[0] = false; // Toggle the state
+            } else {
+                bLButton.setStyle("-fx-background-color: #ff0000; "); // Change to red
+                mLButton.setStyle("-fx-background-color: #66ff00; "); // Change to green
+                bCButton.setStyle("-fx-background-color: #66ff00; "); // Change to green
+                bLState[0] = true; // Toggle the state
+                mLState[0] = true; // Toggle the state
+                bCState[0] = true; // Toggle the state
+            }
+            checkWin();
+        });
+
+        bCButton.setOnAction(event -> {
+            // Logic for bCButton
+            if (bCState[0]) {
+                bCButton.setStyle("-fx-background-color: #66ff00; "); // Change to green
+                bLButton.setStyle("-fx-background-color: #ff0000; "); // Change bLButton to red
+                bRButton.setStyle("-fx-background-color: #ff0000; "); // Change bRButton to red
+                bLState[0] = false; // Toggle the state
+                bCState[0] = false; // Toggle the state
+                bRState[0] = false; // Toggle the state
+            } else {
+                bCButton.setStyle("-fx-background-color: #ff0000; "); // Change to red
+                bLButton.setStyle("-fx-background-color: #66ff00; "); // Change bLButton to green
+                bRButton.setStyle("-fx-background-color: #66ff00; "); // Change bRButton to green
+                bLState[0] = true; // Toggle the state
+                bCState[0] = true; // Toggle the state
+                bRState[0] = true; // Toggle the state
+            }
+            checkWin(); // Call checkWin() method
+        });
+
+        bRButton.setOnAction(event -> {
+            // Logic for bRButton
+            if (bRState[0]) {
+                bRButton.setStyle("-fx-background-color: #66ff00; "); // Change to green
+                mRButton.setStyle("-fx-background-color: #ff0000; "); // Change mRButton to red
+                bCButton.setStyle("-fx-background-color: #ff0000; "); // Change bCButton to red
+                bRState[0] = false; // Toggle the state
+                mRState[0] = false; // Toggle the state
+                bCState[0] = false; // Toggle the state
+            } else {
+                bRButton.setStyle("-fx-background-color: #ff0000; "); // Change to red
+                mRButton.setStyle("-fx-background-color: #66ff00; "); // Change mRButton to green
+                bCButton.setStyle("-fx-background-color: #66ff00; "); // Change bCButton to green
+                bRState[0] = true; // Toggle the state
+                mRState[0] = true; // Toggle the state
+                bCState[0] = true; // Toggle the state
+            }
+            checkWin(); // Call checkWin() method
+        });
+
+
+        topRow.setAlignment(Pos.CENTER);
+        middleLeft.setAlignment(Pos.CENTER_LEFT);
+        middleCenter.setAlignment(Pos. CENTER);
+        middleRight.setAlignment(Pos.CENTER_RIGHT);
+        bottomRow.setAlignment(Pos.CENTER);
+
+        BorderPane pane = new BorderPane();
+
+        BorderPane borderPane = new BorderPane();
+        borderPane.setPadding(new Insets(50));
+        borderPane.setTop(topRow);
+        borderPane.setLeft(middleLeft);
+        borderPane.setCenter(middleCenter);
+        borderPane.setRight(middleRight);
+        borderPane.setBottom(bottomArea);
+
+        Scene scene = new Scene(borderPane);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Magic Squares");
+        primaryStage.show();
+    }
+}
